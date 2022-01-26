@@ -49,7 +49,7 @@ namespace Maersk.Sorting.BusinessService
 
         public async Task<SortJobModel> GetJob(System.Guid jobId)
         {
-            return _sortJobProcessorRepository.GetJob(jobId);
+            return await _sortJobProcessorRepository.GetJob(jobId);
         }
 
         public async Task<SortJobModel[]> GetJobs()
@@ -60,7 +60,7 @@ namespace Maersk.Sorting.BusinessService
         public async Task<SortJobModel> Process(SortJobModel job)
         {
             _logger.LogInformation("Processing job with ID '{JobId}'.", job.Id);
-            var stopwatch = Stopwatch.StartNew();          
+            var stopwatch = Stopwatch.StartNew();
 
             var output = job.Input.OrderBy(n => n).ToArray();
             await Task.Delay(5000); // NOTE: This is just to simulate a more expensive operation
@@ -68,15 +68,8 @@ namespace Maersk.Sorting.BusinessService
             var duration = stopwatch.Elapsed;
 
             _logger.LogInformation("Completed processing job with ID '{JobId}'. Duration: '{Duration}'.", job.Id, duration);
-            try
-            {
-              //  job.Output = output;
-            }
-            catch (Exception ex)
-            {
 
-            }
-
+            job.Output = output;
             job.Duration = duration;
             job.Status = SortJobStatus.Completed;
             return job;
@@ -84,11 +77,6 @@ namespace Maersk.Sorting.BusinessService
         private void SaveJob(SortJobModel jobModel)
         {
             _sortJobProcessorRepository.SaveJob(jobModel);
-        }
-
-        private void UpdateJob(SortJobModel sortJobModel)
-        {
-            _sortJobProcessorRepository.UpdateJob(sortJobModel);
         }
     }
 }

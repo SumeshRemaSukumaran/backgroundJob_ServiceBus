@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Converters;
 using Maersk.Sorting.BusinessService;
 using Maersk.Sorting.Contracts.BusinessService.SortJob;
-using Maersk.Sorting.Contracts.DataService.Store;
+using Maersk.Sorting.Contracts.DataService.Entities;
 using Maersk.Sorting.DataService.Entities;
 using Maersk.Sorting.Contracts.DataService;
 using Maersk.Sorting.DataService.SortJob;

@@ -16,42 +16,40 @@ namespace Maersk.Sorting.QueueService
     public class JobQueue
     {
         private readonly object queueLock = new object();
-        public LinkedList<SortJobModel> Items { get; }
+        public LinkedList<SortJobModel> SortJob { get; }
         private readonly ILogger<JobQueue> _logger;
 
-        public JobQueue(
-       IBackgroundTaskQueue taskQueue,
-       ILogger<JobQueue> logger,
-       IHostApplicationLifetime applicationLifetime)
+        public JobQueue(ILogger<JobQueue> logger)
         {
             _logger = logger;
-            Items = new LinkedList<SortJobModel>();
+            SortJob = new LinkedList<SortJobModel>();
         }
         public void EnqueueJob(SortJobModel item)
         {
             var value = new LinkedListNode<SortJobModel>(item);
-            if (Items.First == null)
+            if (SortJob.First == null)
             {
                 lock (queueLock)
                 {
-                    Items.AddFirst(value);
+                    SortJob.AddFirst(value);
                 }
             }
             else
             {
                 lock (queueLock)
                 {
-                    Items.AddLast(value);
+                    SortJob.AddLast(value);
                 }
             }
+            _logger.LogInformation("Job {jobId} added to Queue ", item.Id);
         }
         public void Dequeue()
         {
-            if (Items.Any())
+            if (SortJob.Any())
             {
                 lock (queueLock)
                 {
-                    Items.RemoveFirst();
+                    SortJob.RemoveFirst();
                 }
             }
         }

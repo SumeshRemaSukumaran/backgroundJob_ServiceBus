@@ -31,7 +31,7 @@ namespace Maersk.Sorting.QueueService
         }
         public void StartBackgroundWorkAsync()
         {
-            _logger.LogInformation($"{nameof(QueueBackgroundWorkAsync)} Queue is starting.");
+            _logger.LogInformation($"{nameof(QueueBackgroundWorkAsync)} Background is starting.");
             Task.Run(async () => await QueueBackgroundWorkAsync());
         }
 
@@ -39,11 +39,11 @@ namespace Maersk.Sorting.QueueService
         {
             while (!_cancellationToken.IsCancellationRequested)
             {
-                if (_jobQueue.Items.Any())
+                if (_jobQueue.SortJob.Any())
                 {
                     // Enqueue a background work item
 
-                    var itemToSort = _jobQueue.Items.First.Value;
+                    var itemToSort = _jobQueue.SortJob.First.Value;
                     await _taskQueue.QueueBackgroundWorkItemAsync(async (CancellationToken ct) =>
                     {
                         if (!ct.IsCancellationRequested)
@@ -57,19 +57,7 @@ namespace Maersk.Sorting.QueueService
                             var duration = stopwatch.Elapsed;
 
                             _logger.LogInformation("Completed processing job with ID '{JobId}'. Duration: '{Duration}'.", itemToSort.Id, duration);
-
-                            
-
-                            try
-                            {
-                                
-                                itemToSort.Output = output ;
-                            }
-                            catch (Exception ex)
-                            {
-
-                            }
-                            
+                            itemToSort.Output = output;
                             itemToSort.Duration = duration;
                             itemToSort.Status = SortJobStatus.Completed;
                         }

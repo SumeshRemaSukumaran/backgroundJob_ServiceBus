@@ -1,5 +1,5 @@
 ﻿using Maersk.Sorting.Contracts.DataService;
-using Maersk.Sorting.Contracts.DataService.Store;
+using Maersk.Sorting.Contracts.DataService.Entities;
 using Maersk.Sorting.Model.Enum;
 using Maersk.Sorting.Model.ViewModel;
 using System;
@@ -19,9 +19,9 @@ namespace Maersk.Sorting.DataService.SortJob
             _jobs = jobs;
         }
 
-        public SortJobModel GetJob(Guid key)
+        public async Task<SortJobModel> GetJob(Guid key)
         {
-            (bool isExists, SortJobModel job) = _jobs.Get(key);
+            SortJobModel job = await _jobs.Get(key);
             return job;
         }
 

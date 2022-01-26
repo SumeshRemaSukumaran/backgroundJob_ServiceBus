@@ -15,19 +15,17 @@ namespace Maersk.Sorting.BusinessService.UnitTest
     {
         private ISortJobProcessorService _sortJobProcessorService;
         private readonly ILogger<SortJobProcessorService> _logger;
+        private readonly ILogger<JobQueue> _loggerJobQueue;
         private readonly ISortJobProcessorRepository _sortJobProcessorRepository;
         private readonly IMapper _mapper;
-        private readonly IBackgroundTaskQueue _taskQueue;
         private readonly JobQueue _queueSortJob;
         public SortJobProcessorServiceTest()
         {
             _sortJobProcessorRepository = new Mock<ISortJobProcessorRepository>().Object;
             _logger = new Mock<ILogger<SortJobProcessorService>>().Object;
             _mapper = new Mock<IMapper>().Object;
-            var _loggerjob = new Mock<ILogger<JobQueue>>().Object;
-            _taskQueue = new Mock<IBackgroundTaskQueue>().Object;
-            var applicationLifetime = new Mock<IHostApplicationLifetime>().Object;
-            _queueSortJob = new JobQueue(_taskQueue, _loggerjob, applicationLifetime);
+            _loggerJobQueue = new Mock<ILogger<JobQueue>>().Object;
+            _queueSortJob = new JobQueue(_loggerJobQueue);
 
             _sortJobProcessorService = new SortJobProcessorService(
                 _logger,

@@ -3,7 +3,8 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Maersk.Sorting.Contracts.DataService.Store;
+using System.Threading.Tasks;
+using Maersk.Sorting.Contracts.DataService.Entities;
 using Maersk.Sorting.Model.ViewModel;
 
 namespace Maersk.Sorting.DataService.Entities
@@ -22,15 +23,16 @@ namespace Maersk.Sorting.DataService.Entities
             return _jobs.TryAdd(key, value);
         }
 
-        public (bool, SortJobModel) Get(Guid key)
+        public Task<SortJobModel> Get(Guid key)
         {
-            return (_jobs.TryGetValue(key, out SortJobModel job), job);
+            _jobs.TryGetValue(key, out SortJobModel job);
+            return Task.FromResult(job);
         }
 
         public SortJobModel[] GetAll()
         {
             var keys = _jobs.Keys.ToList();
-            SortJobModel[] jobs =new SortJobModel[keys.Count];
+            SortJobModel[] jobs = new SortJobModel[keys.Count];
             int i = 0;
             foreach (var key in keys)
             {

@@ -11,7 +11,7 @@ namespace Maersk.Sorting.Contracts.DataService
     public interface ISortJobProcessorRepository
     {
         SortJobModel[] GetJobs();
-        SortJobModel GetJob(Guid key);
+        Task<SortJobModel> GetJob(Guid key);
         bool SaveJob(SortJobModel sortJobModel);
         bool UpdateJob(SortJobModel sortJobModel);
     }
