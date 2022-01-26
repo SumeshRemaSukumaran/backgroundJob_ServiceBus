@@ -1,4 +1,4 @@
-﻿namespace Maersk.Sorting.Api
+﻿namespace Maersk.Sorting.Model.Enum
 {
     public enum SortJobStatus
     {
