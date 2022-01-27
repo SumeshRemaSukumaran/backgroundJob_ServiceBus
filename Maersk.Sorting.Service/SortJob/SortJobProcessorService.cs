@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
-using Maersk.Sorting.Contracts.BusinessService.SortJob;
-using Maersk.Sorting.Contracts.DataService;
-using Maersk.Sorting.Model.Dto;
 using Maersk.Sorting.Model.Enum;
 using Maersk.Sorting.Model.ViewModel;
 using Maersk.Sorting.QueueService;
+using Maersk.Sorting.Service.Interface.BusinessService.SortJob;
+using Maersk.Sorting.Service.Interface.DataService;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -12,7 +11,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Maersk.Sorting.BusinessService
+namespace Maersk.Sorting.Service.SortJob
 {
     public class SortJobProcessorService : ISortJobProcessorService
     {
@@ -54,7 +53,7 @@ namespace Maersk.Sorting.BusinessService
 
         public async Task<SortJobModel[]> GetJobs()
         {
-            return _sortJobProcessorRepository.GetJobs();
+            return await _sortJobProcessorRepository.GetJobs();
         }
 
         public async Task<SortJobModel> Process(SortJobModel job)

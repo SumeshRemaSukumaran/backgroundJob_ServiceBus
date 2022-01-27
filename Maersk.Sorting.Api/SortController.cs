@@ -1,10 +1,10 @@
 ﻿namespace Maersk.Sorting.Api.Controllers
 {
     using AutoMapper;
-    using Maersk.Sorting.Contracts.BusinessService.SortJob;
     using Maersk.Sorting.Model.Dto;
     using Maersk.Sorting.Model.Enum;
     using Maersk.Sorting.Model.ViewModel;
+    using Maersk.Sorting.Service.Interface.BusinessService.SortJob;
     using Microsoft.AspNetCore.Mvc;
     using System;
     using System.Threading.Tasks;

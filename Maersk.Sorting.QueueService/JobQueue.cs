@@ -1,5 +1,4 @@
-﻿using Maersk.Sorting.Model.Enum;
-using Maersk.Sorting.Model.ViewModel;
+﻿using Maersk.Sorting.Model.ViewModel;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NPOI.SS.Formula.Functions;

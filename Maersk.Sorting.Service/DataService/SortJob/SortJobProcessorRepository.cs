@@ -1,7 +1,6 @@
-﻿using Maersk.Sorting.Contracts.DataService;
-using Maersk.Sorting.Contracts.DataService.Entities;
-using Maersk.Sorting.Model.Enum;
-using Maersk.Sorting.Model.ViewModel;
+﻿using Maersk.Sorting.Model.ViewModel;
+using Maersk.Sorting.Service.Interface.DataService;
+using Maersk.Sorting.Service.Interface.Entities;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maersk.Sorting.DataService.SortJob
+namespace Maersk.Sorting.Service.DataService.SortJob
 {
     public class SortJobProcessorRepository : ISortJobProcessorRepository
     {
@@ -25,9 +24,9 @@ namespace Maersk.Sorting.DataService.SortJob
             return job;
         }
 
-        public SortJobModel[] GetJobs()
+        public async Task<SortJobModel[]> GetJobs()
         {
-            return _jobs.GetAll();
+            return await  _jobs.GetAll();
         }
 
         public bool SaveJob(SortJobModel sortJobModel)

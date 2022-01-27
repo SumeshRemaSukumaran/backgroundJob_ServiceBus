@@ -1,9 +1,8 @@
-﻿using Maersk.Sorting.Model.Dto;
-using Maersk.Sorting.Model.ViewModel;
+﻿using Maersk.Sorting.Model.ViewModel;
 using System;
 using System.Threading.Tasks;
 
-namespace Maersk.Sorting.Contracts.BusinessService.SortJob
+namespace Maersk.Sorting.Service.Interface.BusinessService.SortJob
 {
     public interface ISortJobProcessorService
     {

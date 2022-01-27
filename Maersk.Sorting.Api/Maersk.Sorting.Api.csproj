@@ -24,11 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Maersk.Sorting.BusinessService\Maersk.Sorting.BusinessService.csproj" />
-    <ProjectReference Include="..\Maersk.Sorting.Contracts\Maersk.Sorting.Contracts.csproj" />
-    <ProjectReference Include="..\Maersk.Sorting.DataService\Maersk.Sorting.DataService.csproj" />
-    <ProjectReference Include="..\Maersk.Sorting.Model\Maersk.Sorting.Model.csproj" />
-    <ProjectReference Include="..\Maersk.Sorting.QueueService\Maersk.Sorting.QueueService.csproj" />
+    <ProjectReference Include="..\Maersk.Sorting.Service\Maersk.Sorting.Service.csproj" />
   </ItemGroup>
 
 

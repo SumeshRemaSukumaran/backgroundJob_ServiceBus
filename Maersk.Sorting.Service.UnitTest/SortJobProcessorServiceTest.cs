@@ -1,7 +1,8 @@
 using AutoMapper;
-using Maersk.Sorting.Contracts.BusinessService.SortJob;
-using Maersk.Sorting.Contracts.DataService;
 using Maersk.Sorting.QueueService;
+using Maersk.Sorting.Service.Interface.BusinessService.SortJob;
+using Maersk.Sorting.Service.Interface.DataService;
+using Maersk.Sorting.Service.SortJob;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

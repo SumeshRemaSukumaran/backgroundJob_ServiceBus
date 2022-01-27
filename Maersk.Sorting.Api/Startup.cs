@@ -4,15 +4,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Converters;
-using Maersk.Sorting.BusinessService;
-using Maersk.Sorting.Contracts.BusinessService.SortJob;
-using Maersk.Sorting.Contracts.DataService.Entities;
-using Maersk.Sorting.DataService.Entities;
-using Maersk.Sorting.Contracts.DataService;
-using Maersk.Sorting.DataService.SortJob;
-using Maersk.Sorting.BusinessService.Mapper;
+using Maersk.Sorting.Service.Mapper;
 using Microsoft.OpenApi.Models;
-using Maersk.Sorting.QueueService;
+using Maersk.Sorting.Service.Interface.BusinessService.SortJob;
+using Maersk.Sorting.Service.Interface.DataService;
+using Maersk.Sorting.Service.Interface.Entities;
+using Maersk.Sorting.Service.Entities;
+using Maersk.Sorting.Service.SortJob;
+using Maersk.Sorting.Service.DataService.SortJob;
 
 namespace Maersk.Sorting.Api
 {

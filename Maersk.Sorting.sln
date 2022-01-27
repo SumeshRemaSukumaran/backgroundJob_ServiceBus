@@ -10,19 +10,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maersk.Sorting.Contracts", "Maersk.Sorting.Contracts\Maersk.Sorting.Contracts.csproj", "{3B8001BE-22D2-4794-B3D1-CC4EF3C3321C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maersk.Sorting.DataService", "Maersk.Sorting.DataService\Maersk.Sorting.DataService.csproj", "{895B1E7C-C4CD-4353-BC34-B8F71C5894C5}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maersk.Sorting.BusinessService", "Maersk.Sorting.BusinessService\Maersk.Sorting.BusinessService.csproj", "{FFD1870A-145A-4BFF-A131-D50994C29FDB}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maersk.Sorting.Model", "Maersk.Sorting.Model\Maersk.Sorting.Model.csproj", "{9F29412C-E328-49BE-AE14-331924F0B387}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maersk.Sorting.BusinessService.UnitTest", "Maersk.Sorting.BusinessService.UnitTest\Maersk.Sorting.BusinessService.UnitTest.csproj", "{DC8F0291-0C70-4D52-B4C4-67F54B8C5746}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maersk.Sorting.QueueService", "Maersk.Sorting.QueueService\Maersk.Sorting.QueueService.csproj", "{9071518B-9975-4650-89D6-C4D6B6AEFE89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maersk.Sorting.QueueService", "Maersk.Sorting.QueueService\Maersk.Sorting.QueueService.csproj", "{9071518B-9975-4650-89D6-C4D6B6AEFE89}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{C15A801D-14F8-4C97-B076-D2F8F31B02E5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maersk.Sorting.Service", "Maersk.Sorting.Service\Maersk.Sorting.Service.csproj", "{C035691A-6689-4542-8D97-6A1AC5DDD320}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maersk.Sorting.Service.UnitTest", "Maersk.Sorting.Service.UnitTest\Maersk.Sorting.Service.UnitTest.csproj", "{1492502E-E620-4ACB-9692-6F5A0637E006}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maersk.Sorting.Model", "Maersk.Sorting.Model\Maersk.Sorting.Model.csproj", "{1EE5BFC0-812E-4987-A268-389A91F23ED0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,36 +30,28 @@ Global
 		{CEE29E7A-CE69-430C-8296-54122899538E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEE29E7A-CE69-430C-8296-54122899538E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEE29E7A-CE69-430C-8296-54122899538E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3B8001BE-22D2-4794-B3D1-CC4EF3C3321C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B8001BE-22D2-4794-B3D1-CC4EF3C3321C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B8001BE-22D2-4794-B3D1-CC4EF3C3321C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B8001BE-22D2-4794-B3D1-CC4EF3C3321C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{895B1E7C-C4CD-4353-BC34-B8F71C5894C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{895B1E7C-C4CD-4353-BC34-B8F71C5894C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{895B1E7C-C4CD-4353-BC34-B8F71C5894C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{895B1E7C-C4CD-4353-BC34-B8F71C5894C5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FFD1870A-145A-4BFF-A131-D50994C29FDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FFD1870A-145A-4BFF-A131-D50994C29FDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FFD1870A-145A-4BFF-A131-D50994C29FDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FFD1870A-145A-4BFF-A131-D50994C29FDB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9F29412C-E328-49BE-AE14-331924F0B387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F29412C-E328-49BE-AE14-331924F0B387}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F29412C-E328-49BE-AE14-331924F0B387}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F29412C-E328-49BE-AE14-331924F0B387}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DC8F0291-0C70-4D52-B4C4-67F54B8C5746}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC8F0291-0C70-4D52-B4C4-67F54B8C5746}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC8F0291-0C70-4D52-B4C4-67F54B8C5746}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC8F0291-0C70-4D52-B4C4-67F54B8C5746}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9071518B-9975-4650-89D6-C4D6B6AEFE89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9071518B-9975-4650-89D6-C4D6B6AEFE89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9071518B-9975-4650-89D6-C4D6B6AEFE89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9071518B-9975-4650-89D6-C4D6B6AEFE89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C035691A-6689-4542-8D97-6A1AC5DDD320}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C035691A-6689-4542-8D97-6A1AC5DDD320}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C035691A-6689-4542-8D97-6A1AC5DDD320}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C035691A-6689-4542-8D97-6A1AC5DDD320}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1492502E-E620-4ACB-9692-6F5A0637E006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1492502E-E620-4ACB-9692-6F5A0637E006}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1492502E-E620-4ACB-9692-6F5A0637E006}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1492502E-E620-4ACB-9692-6F5A0637E006}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EE5BFC0-812E-4987-A268-389A91F23ED0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EE5BFC0-812E-4987-A268-389A91F23ED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EE5BFC0-812E-4987-A268-389A91F23ED0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EE5BFC0-812E-4987-A268-389A91F23ED0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{DC8F0291-0C70-4D52-B4C4-67F54B8C5746} = {C15A801D-14F8-4C97-B076-D2F8F31B02E5}
+		{1492502E-E620-4ACB-9692-6F5A0637E006} = {C15A801D-14F8-4C97-B076-D2F8F31B02E5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE4C4D39-AC6E-4A0A-98DF-7510DC1A8DED}

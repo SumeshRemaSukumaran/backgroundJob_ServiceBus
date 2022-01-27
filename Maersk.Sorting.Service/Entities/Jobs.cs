@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Maersk.Sorting.Contracts.DataService.Entities;
 using Maersk.Sorting.Model.ViewModel;
+using Maersk.Sorting.Service.Interface.Entities;
 
-namespace Maersk.Sorting.DataService.Entities
+namespace Maersk.Sorting.Service.Entities
 {
     public class Jobs : IJobs
     {
@@ -29,7 +27,7 @@ namespace Maersk.Sorting.DataService.Entities
             return Task.FromResult(job);
         }
 
-        public SortJobModel[] GetAll()
+        public Task<SortJobModel[]> GetAll()
         {
             var keys = _jobs.Keys.ToList();
             SortJobModel[] jobs = new SortJobModel[keys.Count];
@@ -40,7 +38,7 @@ namespace Maersk.Sorting.DataService.Entities
                 jobs[i] = job;
                 i++;
             }
-            return jobs;
+            return Task.FromResult(jobs);
         }
 
         public bool Update(Guid key, SortJobModel value)
