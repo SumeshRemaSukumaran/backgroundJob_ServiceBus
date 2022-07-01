@@ -1,4 +1,6 @@
+using Maersk.Sorting.Contracts.Queue;
 using Maersk.Sorting.QueueService;
+using Maersk.Sorting.ServiceBusQueue;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,10 +15,11 @@ namespace Maersk.Sorting.Api
 
             using IHost host = (IHost)Host.CreateDefaultBuilder(args)
     .ConfigureServices((context, services) =>
-    {
+    {       
         services.AddSingleton<JobQueue>();
         services.AddSingleton<BackgroundJob>();
         services.AddHostedService<QueuedHostedService>();
+        services.AddHostedService<SubscriberBackgroundJob>();
         services.AddSingleton<IBackgroundTaskQueue>(_ =>
         {
             if (!int.TryParse(context.Configuration["QueueCapacity"], out var queueCapacity))
@@ -25,6 +28,8 @@ namespace Maersk.Sorting.Api
             }
             return new DefaultBackgroundTaskQueue(queueCapacity);
         });
+
+        
     })
     .ConfigureWebHostDefaults(webBuilder =>
     {

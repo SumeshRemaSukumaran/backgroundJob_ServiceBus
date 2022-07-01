@@ -13,6 +13,10 @@ using Maersk.Sorting.DataService.SortJob;
 using Maersk.Sorting.BusinessService.Mapper;
 using Microsoft.OpenApi.Models;
 using Maersk.Sorting.QueueService;
+using Maersk.Sorting.Contracts.Queue;
+using Maersk.Sorting.ServiceBusQueue;
+using Microsoft.Extensions.Azure;
+using Microsoft.Azure.ServiceBus;
 
 namespace Maersk.Sorting.Api
 {
@@ -41,11 +45,24 @@ namespace Maersk.Sorting.Api
                     Description = "",
                 });
             });
-                
 
+            string connectionString = Configuration.GetValue<string>("ServiceBus:ConnectionString");
+            string queueName = Configuration.GetValue<string>("ServiceBus:QueueName");
+            string topicName = Configuration.GetValue<string>("ServiceBus:TopicName");
+            string subscriptionName = Configuration.GetValue<string>("ServiceBus:SubscriptionName"); 
+            services.AddSingleton<ITopicClient> ( s =>             
+                new TopicClient (connectionString,topicName)           
+            );
+
+           
             services.AddTransient<ISortJobProcessorService, SortJobProcessorService>();
             services.AddTransient<ISortJobProcessorRepository, SortJobProcessorRepository>();
-            services.AddSingleton<IJobs, Jobs>();           
+            services.AddSingleton<IJobs, Jobs>();
+            services.AddTransient<IJobQueue, AzureServiceBusQueue>();
+            services.AddSingleton<ISubscriptionClient>(s =>            
+                new SubscriptionClient(connectionString, topicName, subscriptionName)
+            );
+            
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

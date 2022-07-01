@@ -1,4 +1,5 @@
-﻿using Maersk.Sorting.Model.Enum;
+﻿using Maersk.Sorting.Contracts.Queue;
+using Maersk.Sorting.Model.Enum;
 using Maersk.Sorting.Model.ViewModel;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Maersk.Sorting.QueueService
 {
-    public class JobQueue
+    public class JobQueue : IJobQueue
     {
         private readonly object queueLock = new object();
         public LinkedList<SortJobModel> SortJob { get; }
@@ -24,8 +25,9 @@ namespace Maersk.Sorting.QueueService
             _logger = logger;
             SortJob = new LinkedList<SortJobModel>();
         }
-        public void EnqueueJob(SortJobModel item)
+        public Task EnqueueJob<T>(T obj)
         {
+            var item = (SortJobModel)(object)obj;
             var value = new LinkedListNode<SortJobModel>(item);
             if (SortJob.First == null)
             {
@@ -42,8 +44,9 @@ namespace Maersk.Sorting.QueueService
                 }
             }
             _logger.LogInformation("Job {jobId} added to Queue ", item.Id);
+          return   Task.CompletedTask;
         }
-        public void Dequeue()
+        public Task Dequeue()
         {
             if (SortJob.Any())
             {
@@ -52,6 +55,7 @@ namespace Maersk.Sorting.QueueService
                     SortJob.RemoveFirst();
                 }
             }
+           return  Task.CompletedTask;
         }
     }
 }

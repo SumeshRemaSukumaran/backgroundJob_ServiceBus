@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Maersk.Sorting.Contracts.BusinessService.SortJob;
 using Maersk.Sorting.Contracts.DataService;
+using Maersk.Sorting.Contracts.Queue;
 using Maersk.Sorting.Model.Dto;
 using Maersk.Sorting.Model.Enum;
 using Maersk.Sorting.Model.ViewModel;
@@ -18,13 +19,13 @@ namespace Maersk.Sorting.BusinessService
     {
         private readonly ILogger<SortJobProcessorService> _logger;
         private readonly ISortJobProcessorRepository _sortJobProcessorRepository;
-        private readonly JobQueue _queueSortJob;
+        private readonly IJobQueue _queueSortJob;
         private readonly IMapper _mapper;
 
         public SortJobProcessorService(ILogger<SortJobProcessorService> logger,
             ISortJobProcessorRepository sortJobProcessorRepository,
             IMapper mapper,
-            JobQueue queueSortJob)
+            IJobQueue queueSortJob)
         {
             _logger = logger;
             _sortJobProcessorRepository = sortJobProcessorRepository;
@@ -54,7 +55,7 @@ namespace Maersk.Sorting.BusinessService
 
         public async Task<SortJobModel[]> GetJobs()
         {
-            return _sortJobProcessorRepository.GetJobs();
+            return  _sortJobProcessorRepository.GetJobs();
         }
 
         public async Task<SortJobModel> Process(SortJobModel job)
