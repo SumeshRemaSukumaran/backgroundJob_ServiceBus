@@ -3,7 +3,7 @@
 ## Introduction
 
 A small C#/.NET Core solution which exposes a simple API, allowing to sort a list of numbers. Sort the numbers in a background job, and make it possible to query these jobs at a later point.
-
+Inject AzureServiceBusQueue for serviceBus queue and JobQueue for App memory queue
 This includes implementing the following three controller actions in the `SortController`:
 
 * `EnqueueJob`: An endpoint to which clients can post a list of numbers to be sorted. The endpoint returns immediately, without requiring clients to wait for the jobs to complete.
