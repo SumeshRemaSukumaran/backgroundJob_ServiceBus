@@ -7,7 +7,8 @@ A small C#/.NET Core solution which exposes a simple API, allowing to sort a lis
 There are two types of queues implemented
 * Azure  ServiceBus Queue
 * App memory queue
-Inject respective service
+
+Inject respective service to use required queue
 
 This includes implementing the following three controller actions in the `SortController`:
 
